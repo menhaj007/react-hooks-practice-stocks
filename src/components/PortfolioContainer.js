@@ -6,7 +6,7 @@ function PortfolioContainer() {
     <div>
       <h2>My Portfolio</h2>
       {
-        //render your portfolio stocks here
+      //  sortArray.map(item => <Stock key={item.id} {...item} />)
       }
     </div>
   );

@@ -1,9 +1,13 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 
+function SearchBar({ sortBy, onChangeSort, filterBy, onChangeFilter }) {
+  function handleSortChange(event) {
+    onChangeSort(event.target.value);
+  }
 
-
-function SearchBar({sortedByAZ, sortedByAZFn, filterStockData}) {
-
+  function handleFilterChange(event) {
+    onChangeFilter(event.target.value);
+  }
 
   return (
     <div>
@@ -13,8 +17,8 @@ function SearchBar({sortedByAZ, sortedByAZFn, filterStockData}) {
           type="radio"
           value="Alphabetically"
           name="sort"
-          checked={sortedByAZ==="Alphabetically"}
-          onChange={sortedByAZFn}
+          checked={sortBy === "Alphabetically"}
+          onChange={handleSortChange}
         />
         Alphabetically
       </label>
@@ -23,15 +27,15 @@ function SearchBar({sortedByAZ, sortedByAZFn, filterStockData}) {
           type="radio"
           value="Price"
           name="sort"
-          checked={sortedByAZ==="Price"}
-          onChange={sortedByAZFn}
+          checked={sortBy === "Price"}
+          onChange={handleSortChange}
         />
         Price
       </label>
       <br />
       <label>
         <strong>Filter:</strong>
-        <select onChange={e => filterStockData(e.target.value)}>
+        <select onChange={handleFilterChange} value={filterBy}>
           <option value="Tech">Tech</option>
           <option value="Sportswear">Sportswear</option>
           <option value="Finance">Finance</option>
